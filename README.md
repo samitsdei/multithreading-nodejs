@@ -1,0 +1,7 @@
+Multithreading in Node.js, introduced with version 13 through the worker threads module, offers a way to execute concurrent tasks. In the main thread's index.js, two routes are defined alongside a function, getSum, which calculates the cumulative sum up to a specified limit.
+
+The process then involves importing the worker threads module into the main thread and creating a separate file, seprateThread.js, to define the getSum function to be executed on another thread. An instance of the worker thread module is created, specifying the path to the separate file.
+
+Upon starting the new thread, communication is established between the main thread and the child thread using event listeners and message passing. The main thread listens for messages from the child thread, which contains the result of the computation. Conversely, the child thread communicates with the main thread using parentPort.postMessage().
+
+This setup enables parallel execution of tasks, enhancing performance in scenarios requiring heavy computation or I/O operations. Multithreading in Node.js presents a powerful capability, particularly beneficial for tasks that can be parallelized, effectively utilizing modern multicore processors.
